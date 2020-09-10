@@ -1,0 +1,14 @@
+# Base Image
+FROM node:alpine
+
+# Setting work directory
+WORKDIR "/app"
+
+COPY "./package.json" .
+COPY "./package-lock.json" .
+
+RUN npm install --loglevel verbose
+
+COPY . .
+
+CMD ["npm","run","start"]
